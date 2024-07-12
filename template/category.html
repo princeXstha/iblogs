@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+WELCOME TO ALPAS BLOGS
+{% endblock %}
+{% block content %}
+
+<body style="background-color: black; color: white;">
+
+<div class="container-custom">
+    <h3>{{ cat.title }}</h3>
+    <div class="img-container">
+        <img src="/media/{{ cat.image }}" class="responsive-img" style="max-height: 400px; width: 80%; object-fit: cover; border-radius: 10px;">
+    </div>
+    <div class="collection" style="max-width: 400px; margin-top: 20px;">
+        {% if posts %}
+            {% for p in posts %}
+            <a href="/blog/{{ p.url }}" class="collection-item" style="border-radius: 5px; background-color: #333; color: white; margin-bottom: 10px; display: block; padding: 10px;">
+                {{ p.title }}
+            </a>
+            {% endfor %}
+        {% else %}
+            <h3>NO POSTS IN THIS CATEGORY</h3>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+
+{% endblock %}

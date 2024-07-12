@@ -1,0 +1,59 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content" style="background-color: #000; color: #fff; border: 1px solid #fff;">
+  {% for cat in cats %}
+  <li><a href="/category/{{cat.url}}" style="color: #fff;">{{cat.title}}</a></li>
+  {% endfor %}
+</ul>
+<ul id="dropdown2" class="dropdown-content" style="background-color: #000; color: #fff; border: 1px solid #fff;">
+  {% for a in authors%}
+  <li><a href="/author/{{a.url}}" style="color: #fff;">{{a.name}}</a></li>
+  {% endfor %}
+</ul>
+<nav class="bg-black na vbar navbar-expand-lg navbar-dark fixed-top" style="border-bottom: 1px solid white; padding: 10px;">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="/home" class="brand-logo"><img class="pic" src="./../media/logo.png"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/about" style="color: #fff;">ABOUT</a></li>
+        <li><a href="/admin" target="_blank" style="color: #fff;">ADMIN</a></li>
+        <!-- Dropdown Trigger -->
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdown1" style="color: #fff;">
+            CATEGORIES<i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdown2" style="color: #fff;">
+            AUTHORS<i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .bg-black {
+    background-color: #000000; /* Black background color */
+  }
+  .pic {
+    margin-top: 20px;
+    height: 30px;
+    width: 70px;
+  }
+  /* Custom dropdown styling */
+  .dropdown-content {
+    background-color: #000;
+    border: 1px solid #fff;
+    color: #fff;
+    min-width: auto; /* Adjust width as needed */
+    overflow-y: auto; /* Enable scrolling if list items exceed height */
+  }
+  .dropdown-content li a {
+    color: #fff;
+    padding: 10px 15px;
+  }
+  .dropdown-content li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Lighten on hover */
+  }
+</style>

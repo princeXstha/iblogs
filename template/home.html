@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}
+WELCOME TO ALPAS BLOG
+{% endblock %}
+{% block content %}
+
+<body style="background-color: black; color: white;">
+
+    <!-- Animated Welcome Text -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 mb-4" style="font-weight: bold; margin-top: 0; animation: fadeInUp 1s ease-out;">Welcome to Alpas Blog</h1>
+                <p class="lead" style="animation: fadeInUp 1s ease-out;">
+                    Explore our diverse collection of categories and insightful posts.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <div class="container">
+        <h4 class="center-align"> CATEGORIES </h4>
+        <div class="owl-carousel" style="border-radius: 15px; overflow: hidden; display: flex; gap: 10px;">
+            {% for cat in cats %}
+            <div class="card item" style="width: 400px; height: 300px; border-radius: 15px;">
+                <div class="img-container">
+                    <img src="/media/{{cat.image}}" style="height: 200px; width: 100%; border-radius: 15px 15px 0 0;" alt="">
+                </div>
+                <div class="card-content" style="border-radius: 0 0 15px 15px; background-color: white; color: black; padding: 10px;">
+                    <div class="card-title">
+                        {{ cat.title }}
+                    </div>
+                    <p class="truncate">{{ cat.description }}</p>
+                    <div class="container center-align mt20">
+                        <a href="/category/{{ cat.url }}" class="btn bg-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Authors Section -->
+   <div class="container">
+    <h4 class="center-align"> AUTHORS </h4>
+    <div class="owl-carousel" style="border-radius: 15px; overflow: hidden; display: flex; gap: 10px;">
+        {% for auth in authors %}
+        <div class="card item" style="width: 400px; height: 300px; border-radius: 15px;">
+            <div class="img-container">
+                <img src="/media/{{auth.image}}" style="height: 200px; width: 100%; border-radius: 15px 15px 0 0;" alt="">
+            </div>
+            <div class="card-content" style="border-radius: 0 0 15px 15px; background-color: white; color: black; padding: 10px;">
+                <div class="card-title">
+                    {{ auth.name }}
+                </div>
+                <p class="truncate">{{ auth.bio }}</p>
+                <div class="container center-align mt20">
+                    <a href="/author/{{ auth.url }}" class="btn bg-primary">View</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+    <!-- Line Separator -->
+    <div class="container mt-4 mb-4">
+        <hr style="border-color: white;">
+    </div>
+
+    <!-- Posts Section -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                {% for p in posts %}
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="/media/{{ p.image }}" style="height:200px; width:400px;" alt="">
+                    </div>
+                     <div class="col-md-8">
+                        {{ p.content | truncatewords:60 | safe }}
+                        <br>
+                    </div>
+                     <div>
+                            <a href="/blog/{{ p.url }}" class="btn">Read more..</a>
+                        </div>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+    </style>
+
+</body>
+
+{% endblock %}

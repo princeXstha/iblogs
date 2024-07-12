@@ -1,0 +1,17 @@
+.bg-primary{
+    background: #477091;
+}
+.container-custom{
+width:90%;
+margin: auto;
+
+
+}
+.mt20{
+margin-top:20 px;
+}
+.item{
+margin-left: 30px;
+width: 200px;
+height: 300px;
+}

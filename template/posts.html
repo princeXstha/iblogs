@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+POST
+{% endblock %}
+{% block content %}
+<body style="background-color: black; color: white;">
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10">
+            <h3>{{ post.title}}</h3>
+            <p>{{ post.cat.title }}</p>
+            <p>{{post.author.name}}</p>
+            <img src="/media/{{ post.image }}" class="responsive-img" alt="{{ post.title }}">
+            <p>{{ post.content | safe }}</p>
+        </div>
+        <div class="col s12 m2">
+            <h5 style="color: white;">Other Categories</h5>
+            {% for cat in cats %}
+            <div class="card item" style="border-radius: 15px; overflow: hidden; margin-bottom: 10px; height:250px">
+                <div class="img-container" style="height:125px">
+                    <img src="/media/{{ cat.image }}" style="height:125px; width:100%" alt="{{ cat.title }}">
+                </div>
+                <div class="card-content" style="height:50px; background-color: white; color: black; border-radius: 0 0 15px 15px;">
+                    <span class="card-title">{{ cat.title }}</span>
+                    <p class="truncate">{{ cat.desc }}</p>
+                    <div class="center-align" style="height:25px">
+                        <a href="/category/{{ cat.url }}" class="btn bg-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+</body>
+{% endblock %}
